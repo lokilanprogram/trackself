@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Globe, X, ArrowRight, Check, Star, Layout, TrendingUp, Calendar } from 'lucide-react';
+import habitTrackerImage from './assets/habittracker.png';
+import dailyTrackerImage from './assets/dailytracker.png';
+import comboTrackersImage from './assets/combotrackers.png';
 
 // --- КОНФИГУРАЦИЯ И ДАННЫЕ ---
 
@@ -64,7 +67,7 @@ const PRODUCTS = [
     category: "planner",
     title: { en: "Daily Tracker", ru: "Дейли Трекер" },
     price: { en: 12, ru: 1200 },
-    image: "https://placehold.co/600x400/E8ECE9/333333?text=Daily+Tracker",
+    image: dailyTrackerImage,
     tags: { en: ["Daily", "Focus"], ru: ["Дейли", "Фокус"] },
     fastspringPath: "daily-tracker",
     bestseller: true
@@ -74,7 +77,7 @@ const PRODUCTS = [
     category: "planner",
     title: { en: "Habit Tracker", ru: "Хэбит Трекер" },
     price: { en: 12, ru: 1200 },
-    image: "https://placehold.co/600x400/F5F5F4/333333?text=Habit+Tracker",
+    image: habitTrackerImage,
     tags: { en: ["Habits", "Health"], ru: ["Хэбиты", "Здоровье"] },
     fastspringPath: "habit-tracker",
     bestseller: false
@@ -84,7 +87,7 @@ const PRODUCTS = [
     category: "bundle",
     title: { en: "Combo: 2 Trackers", ru: "Комбо: 2 Планнера" },
     price: { en: 19, ru: 1900 },
-    image: "https://placehold.co/600x400/E6E2DE/333333?text=Trackers+Combo",
+    image: comboTrackersImage,
     tags: { en: ["Best Value", "Save"], ru: ["Выгодно", "Скидка"] },
     fastspringPath: "PASTE_COMBO_PRODUCT_PATH",
     bestseller: false
@@ -396,7 +399,7 @@ const ProductCard = ({ product, lang }) => {
       whileHover={{ y: -5 }}
       className="group bg-white rounded-2xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-lg transition-all duration-300"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-stone-200">
+      <div className="relative aspect-[16/9] overflow-hidden bg-stone-200">
         <img
           src={product.image}
           alt={product.title[lang]}
