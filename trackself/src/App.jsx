@@ -67,30 +67,57 @@ const PRODUCTS = [
     category: "planner",
     title: { en: "Daily Tracker", ru: "Дейли Трекер" },
     price: { en: 12, ru: 1200 },
+    oldPrice: { en: 18, ru: 1800 },
     image: dailyTrackerImage,
     tags: { en: ["Daily", "Focus"], ru: ["Дейли", "Фокус"] },
     fastspringPath: "daily-tracker",
-    bestseller: true
+    bestseller: true,
+    description: {
+      en: "A focused daily system for clarity, priorities, and progress. Plan your day, capture results, and stay consistent.",
+      ru: "Сфокусированная ежедневная система для ясности, приоритетов и прогресса. Планируй день, фиксируй результаты и держи ритм."
+    },
+    details: {
+      en: ["Morning plan + evening review", "Priority blocks and time focus", "Micro-habit checklist", "Daily mood + energy log"],
+      ru: ["Утренний план + вечерний обзор", "Блоки приоритетов и фокуса", "Чек-лист микро-привычек", "Лог настроения и энергии"]
+    }
   },
   {
     id: 2,
     category: "planner",
     title: { en: "Habit Tracker", ru: "Хэбит Трекер" },
     price: { en: 12, ru: 1200 },
+    oldPrice: { en: 18, ru: 1800 },
     image: habitTrackerImage,
     tags: { en: ["Habits", "Health"], ru: ["Хэбиты", "Здоровье"] },
     fastspringPath: "habit-tracker",
-    bestseller: false
+    bestseller: false,
+    description: {
+      en: "Build routines that stick with a clean monthly habit grid and weekly insights.",
+      ru: "Построй устойчивые привычки с чистой сеткой месяца и недельной аналитикой."
+    },
+    details: {
+      en: ["Monthly grid with streaks", "Weekly summary and notes", "Progress score + KPI", "Clean, print-ready layout"],
+      ru: ["Сетка месяца со streaks", "Недельная сводка и заметки", "Скор прогресса + KPI", "Чистый макет для печати"]
+    }
   },
   {
     id: 3,
     category: "bundle",
     title: { en: "Combo: 2 Trackers", ru: "Комбо: 2 Планнера" },
     price: { en: 19, ru: 1900 },
+    oldPrice: { en: 24, ru: 2400 },
     image: comboTrackersImage,
     tags: { en: ["Best Value", "Save"], ru: ["Выгодно", "Скидка"] },
     fastspringPath: "PASTE_COMBO_PRODUCT_PATH",
-    bestseller: false
+    bestseller: false,
+    description: {
+      en: "Get both trackers together and save. Perfect for daily focus + habit consistency.",
+      ru: "Два трекера вместе и выгоднее. Идеально для ежедневного фокуса и привычек."
+    },
+    details: {
+      en: ["Daily Tracker + Habit Tracker bundle", "Unified visual style", "One-time purchase, lifetime access", "Save vs buying separately"],
+      ru: ["Daily Tracker + Habit Tracker в наборе", "Единый визуальный стиль", "Разовая покупка, доступ навсегда", "Экономия против отдельной покупки"]
+    }
   }
 ];
 
@@ -387,7 +414,7 @@ const TemplatesShowcase = ({ lang }) => {
 //   );
 };
 
-const ProductCard = ({ product, lang }) => {
+const ProductCard = ({ product, lang, onOpen }) => {
   const t = TRANSLATIONS[lang];
   const currency = t.currency;
   const price = product.price[lang];
@@ -397,7 +424,16 @@ const ProductCard = ({ product, lang }) => {
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className="group bg-white rounded-2xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-lg transition-all duration-300"
+      onClick={() => onOpen(product)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onOpen(product);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      className="group bg-white rounded-2xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-stone-200">
         <img
@@ -435,6 +471,7 @@ const ProductCard = ({ product, lang }) => {
             href={buyUrl}
             target="_blank"
             rel="noreferrer"
+            onClick={(event) => event.stopPropagation()}
             className="bg-stone-100 hover:bg-stone-900 hover:text-white text-stone-900 px-4 py-2 rounded-full transition duration-300 text-sm font-medium"
             title={!product.fastspringPath || product.fastspringPath.includes("PASTE_") ? "Вставь fastspringPath" : ""}
           >
@@ -446,9 +483,95 @@ const ProductCard = ({ product, lang }) => {
   );
 };
 
+const ProductDetailModal = ({ product, lang, onClose }) => {
+  const t = TRANSLATIONS[lang];
+
+  if (!product) return null;
+
+  const currency = t.currency;
+  const price = product.price[lang];
+  const oldPrice = product.oldPrice?.[lang];
+  const buyUrl = `${FASTSPRING_TEST_BASE}${product.fastspringPath}`;
+
+  return (
+    <div className="fixed inset-0 z-[120]">
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+      <div className="absolute left-1/2 top-1/2 w-[92vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white shadow-2xl overflow-hidden border border-stone-200">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200">
+          <div className="font-medium text-stone-900">{product.title[lang]}</div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-stone-100 transition"
+            aria-label="Close details"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
+          <div className="rounded-2xl overflow-hidden bg-stone-100 border border-stone-200">
+            <img src={product.image} alt={product.title[lang]} className="w-full h-full object-cover" />
+          </div>
+
+          <div>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {product.tags[lang].map((tag, i) => (
+                <span key={i} className="text-[10px] uppercase tracking-wider text-stone-400 font-medium border border-stone-100 px-2 py-0.5 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <p className="text-stone-600 leading-relaxed">{product.description[lang]}</p>
+
+            <ul className="mt-6 space-y-2">
+              {product.details[lang].map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-stone-700">
+                  <span className="mt-1 text-emerald-700"><Check size={16} /></span>
+                  <span className="text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex items-end gap-3">
+              {oldPrice ? (
+                <span className="text-sm text-stone-400 line-through">
+                  {currency}{oldPrice}
+                </span>
+              ) : null}
+              <span className="text-2xl font-semibold text-stone-900">
+                {currency}{price}
+              </span>
+            </div>
+
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <a
+                href={buyUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-stone-900 text-white px-6 py-3 rounded-xl font-medium hover:bg-stone-700 transition flex items-center justify-center"
+                title={!product.fastspringPath || product.fastspringPath.includes("PASTE_") ? "Вставь fastspringPath" : ""}
+              >
+                {t.buy}
+              </a>
+              <button
+                onClick={onClose}
+                className="bg-white border border-stone-200 text-stone-900 px-6 py-3 rounded-xl font-medium hover:bg-stone-50 transition"
+              >
+                {lang === "en" ? "Back to shop" : "Назад в магазин"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Shop = ({ lang }) => {
   const t = TRANSLATIONS[lang];
   const [filter, setFilter] = useState('all');
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const filteredProducts = filter === 'all'
     ? PRODUCTS
@@ -482,10 +605,20 @@ const Shop = ({ lang }) => {
       <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence>
           {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} lang={lang} />
+            <ProductCard key={product.id} product={product} lang={lang} onOpen={setSelectedProduct} />
           ))}
         </AnimatePresence>
       </motion.div>
+
+      <AnimatePresence>
+        {selectedProduct ? (
+          <ProductDetailModal
+            product={selectedProduct}
+            lang={lang}
+            onClose={() => setSelectedProduct(null)}
+          />
+        ) : null}
+      </AnimatePresence>
     </section>
   );
 };
