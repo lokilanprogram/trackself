@@ -222,7 +222,7 @@ Terms and definitions:
     {
       title: "9. PROVIDER DETAILS AND CONTACTS",
       body: `Full name: Lokyaev Alan Eduardovich
-TIN: 250814495705
+TIN: 304794676
 Contact email: realmaboi@gmail.com`,
     },
   ],
