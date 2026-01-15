@@ -970,10 +970,17 @@ const Shop = ({ lang }) => {
   );
 };
 
-const LegalPage = ({ title, content, backLabel }) => (
+const LegalPage = ({ title, content, backLabel, onNavigate }) => (
   <div className="min-h-screen bg-stone-50 selection:bg-emerald-200 selection:text-emerald-900 font-sans">
     <div className="max-w-5xl mx-auto px-6 py-10">
-      <a href="#top" className="text-sm text-stone-500 hover:text-stone-900 transition">
+      <a
+        href="/"
+        onClick={onNavigate ? (event) => {
+          event.preventDefault();
+          onNavigate('/');
+        } : undefined}
+        className="text-sm text-stone-500 hover:text-stone-900 transition"
+      >
         {backLabel}
       </a>
       <h1 className="text-3xl md:text-4xl font-serif text-stone-900 mt-4 mb-6">
@@ -993,8 +1000,13 @@ const LegalPage = ({ title, content, backLabel }) => (
   </div>
 );
 
-const Footer = ({ lang }) => {
+const Footer = ({ lang, onNavigate }) => {
   const t = TRANSLATIONS[lang];
+  const handleNavigate = (event, path) => {
+    if (!onNavigate) return;
+    event.preventDefault();
+    onNavigate(path);
+  };
   return (
     <footer className="bg-stone-900 text-stone-400 py-12 px-6" id="faq">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -1020,13 +1032,15 @@ const Footer = ({ lang }) => {
           <div className="text-stone-200 font-medium mb-4">{t.documentsTitle}</div>
           <div className="flex flex-col gap-3">
             <a
-              href="#offer"
+              href="/offer"
+              onClick={(event) => handleNavigate(event, '/offer')}
               className="inline-flex items-center justify-center rounded-full border border-stone-600 px-4 py-2 text-sm text-stone-200 hover:text-white hover:border-stone-400 transition"
             >
               {t.offerTitle}
             </a>
             <a
-              href="#privacy"
+              href="/privacy"
+              onClick={(event) => handleNavigate(event, '/privacy')}
               className="inline-flex items-center justify-center rounded-full border border-stone-600 px-4 py-2 text-sm text-stone-200 hover:text-white hover:border-stone-400 transition"
             >
               {t.privacyTitle}
@@ -1041,14 +1055,16 @@ const Footer = ({ lang }) => {
 // --- MAIN APP ---
 
 export default function App() {
+  const getPageFromPath = (path) => {
+    if (path === '/offer') return 'offer';
+    if (path === '/privacy') return 'privacy';
+    return 'home';
+  };
+
   const [lang, setLang] = useState('en');
   const [page, setPage] = useState(() => {
     if (typeof window === 'undefined') return 'home';
-    return window.location.hash === '#offer'
-      ? 'offer'
-      : window.location.hash === '#privacy'
-        ? 'privacy'
-        : 'home';
+    return getPageFromPath(window.location.pathname);
   });
 
   useEffect(() => {
@@ -1056,33 +1072,33 @@ export default function App() {
   }, [lang]);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash === '#offer') {
-        setPage('offer');
-      } else if (window.location.hash === '#privacy') {
-        setPage('privacy');
-      } else {
-        setPage('home');
-      }
+    const handlePopState = () => {
+      setPage(getPageFromPath(window.location.pathname));
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
+    window.addEventListener('popstate', handlePopState);
+    handlePopState();
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const t = TRANSLATIONS[lang];
+  const navigate = (path) => {
+    if (typeof window === 'undefined') return;
+    if (window.location.pathname === path) return;
+    window.history.pushState({}, '', path);
+    setPage(getPageFromPath(path));
+  };
 
   if (page === 'offer') {
     return (
-      <LegalPage title={t.offerTitle} content={OFFER_CONTENT[lang]} backLabel={t.backToSite} />
+      <LegalPage title={t.offerTitle} content={OFFER_CONTENT[lang]} backLabel={t.backToSite} onNavigate={navigate} />
     );
   }
 
   if (page === 'privacy') {
     return (
-      <LegalPage title={t.privacyTitle} content={PRIVACY_CONTENT[lang]} backLabel={t.backToSite} />
+      <LegalPage title={t.privacyTitle} content={PRIVACY_CONTENT[lang]} backLabel={t.backToSite} onNavigate={navigate} />
     );
   }
 
@@ -1093,7 +1109,7 @@ export default function App() {
       <Features lang={lang} />
       <TemplatesShowcase lang={lang} />
       <Shop lang={lang} />
-      <Footer lang={lang} />
+      <Footer lang={lang} onNavigate={navigate} />
     </div>
   );
 }
