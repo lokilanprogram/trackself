@@ -15,7 +15,7 @@ const TRANSLATIONS = {
     shopTitle: "Curated Collection",
     shopSubtitle: "Tools designed to make you productive and calm.",
     buy: "Buy",
-    footer: "© 2025 GridFlow. Designed for the organized mind.",
+    footer: "© 2025 TrackSelf. Designed for the organized mind.",
     filters: { all: "All", planner: "Planners", bundle: "Bundle" },
     currency: "$",
     cart: "Cart",
@@ -31,6 +31,15 @@ const TRANSLATIONS = {
     preview: "Preview",
     open: "Open",
     copy: "Make a copy",
+    bestseller: "Bestseller",
+    legalTitle: "Seller details",
+    legalName: "Full name: Lokyaev Alan Eduardovich",
+    legalInn: "Tax ID: 250814495705",
+    legalContact: "Contact email: realmaboi@gmail.com",
+    documentsTitle: "Documents",
+    backToSite: "Back to site",
+    offerTitle: "Public offer",
+    privacyTitle: "Privacy policy",
   },
   ru: {
     heroTitle: "Структурируй свой хаос.",
@@ -39,7 +48,7 @@ const TRANSLATIONS = {
     shopTitle: "Коллекция шаблонов",
     shopSubtitle: "Инструменты, созданные для спокойствия и продуктивности.",
     buy: "Купить",
-    footer: "© 2025 GridFlow. Дизайн для организованного разума.",
+    // footer: "© 2025 TrackSelf. Дизайн для организованного разума.",
     filters: { all: "Все", planner: "Планнеры", bundle: "Комбо" },
     currency: "₽",
     cart: "Корзина",
@@ -55,6 +64,15 @@ const TRANSLATIONS = {
     preview: "Превью",
     open: "Открыть",
     copy: "Сделать копию",
+    bestseller: "Хит продаж",
+    legalTitle: "Реквизиты",
+    legalName: "ФИО: Локьяев Алан Эдуардович",
+    legalInn: "ИНН: 250814495705",
+    legalContact: "Контактный e-mail: realmaboi@gmail.com",
+    documentsTitle: "Документы",
+    backToSite: "Вернуться на сайт",
+    offerTitle: "Публичная оферта",
+    privacyTitle: "Политика конфиденциальности",
   }
 };
 
@@ -66,8 +84,8 @@ const PRODUCTS = [
     id: 1,
     category: "planner",
     title: { en: "Daily Tracker", ru: "Дейли Трекер" },
-    price: { en: 12, ru: 1200 },
-    oldPrice: { en: 18, ru: 1800 },
+    price: { en: 12, ru: 399 },
+    oldPrice: { en: 18, ru: 699 },
     image: dailyTrackerImage,
     tags: { en: ["Daily", "Focus"], ru: ["Дейли", "Фокус"] },
     fastspringPath: "daily-tracker",
@@ -85,8 +103,8 @@ const PRODUCTS = [
     id: 2,
     category: "planner",
     title: { en: "Habit Tracker", ru: "Хэбит Трекер" },
-    price: { en: 12, ru: 1200 },
-    oldPrice: { en: 18, ru: 1800 },
+    price: { en: 12, ru: 399 },
+    oldPrice: { en: 18, ru: 699 },
     image: habitTrackerImage,
     tags: { en: ["Habits", "Health"], ru: ["Хэбиты", "Здоровье"] },
     fastspringPath: "habit-tracker",
@@ -104,8 +122,8 @@ const PRODUCTS = [
     id: 3,
     category: "bundle",
     title: { en: "Combo: 2 Trackers", ru: "Комбо: 2 Планнера" },
-    price: { en: 19, ru: 1900 },
-    oldPrice: { en: 24, ru: 2400 },
+    price: { en: 19, ru: 699 },
+    oldPrice: { en: 24, ru: 1499 },
     image: comboTrackersImage,
     tags: { en: ["Best Value", "Save"], ru: ["Выгодно", "Скидка"] },
     fastspringPath: "PASTE_COMBO_PRODUCT_PATH",
@@ -119,6 +137,172 @@ const PRODUCTS = [
       ru: ["Daily Tracker + Habit Tracker в наборе", "Единый визуальный стиль", "Разовая покупка, доступ навсегда", "Экономия против отдельной покупки"]
     }
   }
+];
+
+const OFFER_CONTENT = [
+  {
+    title: "",
+    body: "о заключении договора на предоставление доступа к цифровому контенту",
+  },
+  {
+    title: "1. ОБЩИЕ ПОЛОЖЕНИЯ",
+    body: `1.1. Настоящий публичный договор (далее – «Оферта») определяет условия предоставления доступа к цифровым продуктам и является официальным публичным предложением Физического лица, зарегистрированного в качестве плательщика налога на профессиональный доход Локьяева Алана Эдуардовича (далее — «Исполнитель»), заключить договор на изложенных ниже условиях с любым полностью дееспособным физическим или юридическим лицом, которое совершит акцепт настоящей оферты (далее — «Заказчик»).
+1.2. Исполнитель осуществляет деятельность на основании Федерального закона от 27.11.2018 N 422-ФЗ "О проведении эксперимента по установлению специального налогового режима "Налог на профессиональный доход".
+1.3. В соответствии с п. 2 ст. 437 Гражданского кодекса РФ (ГК РФ) данный документ является публичной офертой. Совершение Заказчиком действий по акцепту оферты в порядке, предусмотренном разделом 3 настоящей Оферты, означает полное и безоговорочное принятие Заказчиком всех условий без каких-либо изъятий или ограничений (акцепт).
+1.4. Договор считается заключенным и приобретает юридическую силу с момента совершения Заказчиком акцепта настоящей оферты.
+
+Термины и определения:
+- Сайт Исполнителя: Интернет-сайт, расположенный по адресу: https://trackself.ru
+- Цифровой контент / Товар: Цифровые продукты, представленные на Сайте Исполнителя – Google Таблицы (электронные таблицы), а также иные сопутствующие материалы (инструкции, гайды), предоставляемые в цифровой форме.
+- Акцепт: Полная и безусловная оплата Заказчиком выбранного Товара, что признается заключением Договора на условиях настоящей оферты.
+- Доступ: Предоставление Заказчику уникальной ссылки для просмотра и/или копирования Google Таблицы в его личный аккаунт.
+- Персональные данные: Информация, указанная Заказчиком при оформлении заказа (адрес электронной почты, никнейм в мессенджере Telegram), необходимая для исполнения настоящего Договора.`,
+  },
+  {
+    title: "2. ПРЕДМЕТ ДОГОВОРА",
+    body: `2.1. Исполнитель предоставляет Заказчику доступ к приобретенному Цифровому контенту (Google Таблицам), а Заказчик обязуется оплатить предоставленный доступ на условиях настоящего Договора.
+2.2. Полный перечень Товаров, их описание, функционал и стоимость размещены на Сайте Исполнителя и являются неотъемлемой частью настоящего Договора.`,
+  },
+  {
+    title: "3. ПОРЯДОК ЗАКЛЮЧЕНИЯ ДОГОВОРА И ДОСТУПА К КОНТЕНТУ",
+    body: `3.1. Заказчик осуществляет выбор Товара на Сайте Исполнителя и при оформлении заказа предоставляет следующие персональные данные, необходимые для связи и исполнения Договора: адрес электронной почты (email) и никнейм в мессенджере Telegram.
+3.2. Оплата Товара производится Заказчиком на условиях 100% предоплаты путем безналичного расчета через платежные системы, подключенные на Сайте Исполнителя.
+3.3. Моментом акцепта (полного и безоговорочного принятия условий оферты) и моментом заключения Договора является факт успешного поступления денежных средств на счет Исполнителя.
+3.4. После подтверждения успешной оплаты Исполнитель в разумный срок, но не позднее 24 (двадцати четырех) часов с момента ее получения, направляет Заказчику доступ к оплаченному Товару. Ссылка для доступа к Google Таблице отправляется на указанный Заказчиком адрес электронной почты и/или в мессенджер Telegram на указанный никнейм (на усмотрение Исполнителя).
+3.5. Моментом оказания Услуги по предоставлению доступа считается момент отправки ссылки Заказчику одним из указанных способов.`,
+  },
+  {
+    title: "4. ПРАВА И ОБЯЗАННОСТИ СТОРОН",
+    body: `4.1. Исполнитель обязуется:
+4.1.1. Предоставить Заказчику доступ к оплаченному Цифровому контенту в порядке и сроки, указанные в п. 3.4. Договора.
+4.1.2. Обеспечивать конфиденциальность персональных данных Заказчика в соответствии с законодательством РФ.
+
+4.2. Исполнитель вправе:
+4.2.1. В одностороннем порядке изменять условия настоящей оферты и/или стоимость Товаров, размещенных на Сайте. Изменения вступают в силу с момента их публикации на Сайте.
+4.2.2. Приостановить оказание услуг по техническим причинам (техническое обслуживание, аварии и т.п.).
+
+4.3. Заказчик обязуется:
+4.3.1. Предоставить достоверные данные, необходимые для получения доступа к Товару и связи с ним.
+4.3.2. Самостоятельно обеспечить наличие технических возможностей (устройство, доступ в интернет, аккаунт Google) для работы с Google Таблицами.
+4.3.3. Не распространять, не тиражировать, не продавать, не передавать третьим лицам предоставленный Цифровой контент (ссылку на Таблицу или ее копию), за исключением использования в своих личных целях. Любое коммерческое использование шаблонов и методик, реализованных в Таблицах, в интересах третьих лиц запрещено.
+4.3.4. Предоставить достоверные адрес электронной почты и никнейм в Telegram, необходимые для надлежащего исполнения Договора.
+
+4.4. Заказчик вправе:
+4.4.1. Требовать от Исполнителя предоставления доступа к Цифровому контенту в соответствии с условиями настоящего Договора.`,
+  },
+  {
+    title: "5. СТОИМОСТЬ УСЛУГ И ПОРЯДОК РАСЧЕТОВ",
+    body: `5.1. Стоимость доступа к выбранному Цифровому контенту указывается на Сайте Исполнителя на момент его оплаты Заказчиком.
+5.2. Вся стоимость услуг Исполнителя включает в себя налог на профессиональный доход (НПД). Исполнитель, являясь самозанятым, не выставляет счета-фактуры и не применяет ККТ, а создает чек в мобильном приложении «Мой налог», который направляется Заказчику по электронной почте.
+5.3. Оплата производится единовременно и в полном объеме на основании выставленного счета путем перечисления денежных средств на банковский счет/карту Исполнителя или через платежный шлюз.
+5.4. Цифровой контент признается оказанным надлежащим образом и принятым Заказчиком в момент отправки ссылки для доступа. В связи с особенностью продукта (предоставление неисключительной лицензии на использование цифрового шаблона), возврат денежных средств после получения Заказчиком доступа к Таблице не осуществляется. Претензии по качеству не принимаются после копирования/скачивания контента Заказчиком.`,
+  },
+  {
+    title: "6. ОТВЕТСТВЕННОСТЬ СТОРОН",
+    body: `6.1. Стороны несут ответственность за неисполнение или ненадлежащее исполнение настоящего Договора в соответствии с действующим законодательством РФ.
+6.2. Исполнитель не несет ответственности за невозможность оказания услуг Заказчику по причинам, не зависящим от Исполнителя, включая, но не ограничиваясь: сбоями в работе интернета, оборудования или программного обеспечения у Заказчика, действиями провайдеров, органов государственной власти.
+6.3. Исполнитель не несет ответственности за результаты использования Заказчиком полученных знаний, шаблонов и материалов, а также за возможные убытки, возникшие в ходе их применения в бизнесе Заказчика.`,
+  },
+  {
+    title: "7. КОНФИДЕНЦИАЛЬНОСТЬ И ЗАЩИТА ДАННЫХ",
+    body: `7.1. Целью сбора и обработки персональных данных Заказчика является исполнение настоящего Договора: идентификация Заказчика, связь с ним для отправки доступа к Товару и решения вопросов, связанных с исполнением Договора, а также направление информационных и рекламных сообщений.
+7.2. Перечень обрабатываемых данных: адрес электронной почты (email), никнейм в мессенджере Telegram, номер мобильного телефона.
+7.3. Обработка персональных данных осуществляется путем смешанной обработки (сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), использование, передача (предоставление доступа).
+7.4. Исполнитель обязуется не передавать полученные персональные данные третьим лицам, за исключением случаев, когда это необходимо для технического обеспечения рассылок (например, с использованием сервисов email-рассылок), и только при условии соблюдения такими лицами конфиденциальности персональных данных.
+7.5. Совершая акцепт настоящей оферты, Заказчик выражает свое согласие на такую обработку своих персональных данных в соответствии с Федеральным законом от 27.07.2006 N 152-ФЗ «О персональных данных» на условиях и для целей, указанных в Оферте.
+7.6. Согласие на обработку персональных данных действует до момента его отзыва Заказчиком путем направления соответствующего уведомления на email Исполнителя. Отзыв согласия влечет за собой невозможность дальнейшего исполнения Договора.`,
+  },
+  {
+    title: "8. ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ",
+    body: `8.1. Настоящий Договор регулируется законодательством Российской Федерации.
+8.2. Все споры и разногласия разрешаются путем переговоров. В случае недостижения согласия спор подлежит разрешению в суде по месту регистрации Исполнителя.
+8.3. Признание судом какого-либо положения Договора недействительным не влечет недействительности остальных положений.`,
+  },
+  {
+    title: "9. РЕКВИЗИТЫ И КОНТАКТЫ ИСПОЛНИТЕЛЯ",
+    body: `ФИО: Локьяев Алан Эдуардович
+ИНН: 250814495705
+Контактный e-mail: realmaboi@gmail.com`,
+  },
+];
+
+const PRIVACY_CONTENT = [
+  {
+    title: "1. ОБЩИЕ ПОЛОЖЕНИЯ",
+    body: `1.1. Настоящая Политика конфиденциальности (далее – «Политика») определяет порядок обработки и защиты персональных данных Физическим лицом, зарегистрированным в качестве плательщика налога на профессионального дохода Локьяевым Аланом Эдуардовичем (далее – «Администратор»).
+
+1.2. Политика действует в отношении всей информации, которую Администратор может получить о Пользователе во время использования им сайта https://trackself.ru (далее – «Сайт»), при заключении и исполнении Договора публичной оферты, а также при любом другом взаимодействии с Администратором.
+
+1.3. Используя Сайт и предоставляя Администратору свои персональные данные, Пользователь дает свое согласие на их обработку в соответствии с настоящей Политикой.
+
+Термины и определения:
+Персональные данные – любая информация, относящаяся к Пользователю как к субъекту персональных данных.
+Обработка персональных данных – любое действие (операция) или совокупность действий (операций), совершаемых с персональными данными, включая сбор, запись, хранение, использование, передачу и уничтожение.`,
+  },
+  {
+    title: "2. ПЕРСОНАЛЬНЫЕ ДАННЫЕ",
+    body: `2.1. Администратор обрабатывает следующие персональные данные Пользователя:
+Адрес электронной почты (e-mail);
+Никнейм (имя пользователя) в мессенджере Telegram;
+Номер мобильного телефона.
+
+2.2. Указанные данные собираются и обрабатываются с конкретными целями, указанными в разделе 3 настоящей Политики.`,
+  },
+  {
+    title: "3. ЦЕЛИ СБОРА И ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ",
+    body: `3.1. Администратор обрабатывает персональные данные Пользователя для следующих целей:
+Идентификация Пользователя как стороны Договора публичной оферты.
+Исполнение обязательств по Договору: направление доступа к оплаченным цифровым продуктам (Google Таблицам) и сопутствующих инструкций.
+Связь с Пользователем для решения вопросов, связанных с исполнением Договора.
+Направление информационных и рекламных материалов о других цифровых продуктах и услугах Администратора (рассылка).
+
+3.2. Согласие на обработку данных для целей, указанных в п.п. 3.1, является обязательным для заключения и исполнения Договора. Согласие на обработку данных для цели, указанной в п. 3.1.4., является добровольным.`,
+  },
+  {
+    title: "4. ПОРЯДОК И УСЛОВИЯ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ",
+    body: `4.1. Обработка персональных данных осуществляется Администратором с соблюдением принципов и правил, установленных Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».
+
+4.2. Обработка персональных данных Пользователя осуществляется следующими способами:
+Сбор;
+Запись;
+Хранение;
+Уточнение (обновление, изменение);
+Использование;
+Передача (только для целей, указанных в п. 4.3);
+Уничтожение.
+
+4.3. Администратор вправе передавать персональные данные Пользователя третьим лицам в следующих случаях:
+Для технической организации рассылок: с использованием сервисов, обеспечивающих конфиденциальность данных.
+По требованию уполномоченных государственных органов в случаях, предусмотренных действующим законодательством Российской Федерации.
+
+4.4. Срок обработки персональных данных:
+Для целей исполнения Договора и рассылки рекламных материалов – до момента отзыва согласия Пользователем.
+
+4.5. Администратор принимает необходимые и достаточные организационные и технические меры для защиты персональных данных Пользователя от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения, а также от иных неправомерных действий с ними третьих лиц.`,
+  },
+  {
+    title: "5. ПРАВА ПОЛЬЗОВАТЕЛЯ",
+    body: `5.1. Пользователь имеет право:
+На доступ к своим персональным данным, их уточнение, блокирование или уничтожение, если данные являются неполными, устаревшими, недостоверными, незаконно полученными или не являются необходимыми для заявленной цели обработки.
+На отзыв согласия на обработку персональных данных, в том числе для целей рекламных рассылок. Отзыв согласия на обработку данных, необходимых для исполнения Договора, влечет невозможность такого исполнения.
+Требовать устранения неправомерных действий Администратора в отношении его персональных данных.
+
+5.2. Для реализации своих прав Пользователь может направить соответствующий запрос Администратору по контактному адресу электронной почты: realmaboi@gmail.com`,
+  },
+  {
+    title: "6. ПРАВА И ОБЯЗАННОСТИ АДМИНИСТРАТОРА",
+    body: `6.1. Администратор обязуется использовать персональные данные Пользователя исключительно в целях, указанных в разделе 3 настоящей Политики.
+
+6.2. Администратор обязан обеспечить конфиденциальность обрабатываемых персональных данных.
+
+6.3. Администратор вправе в одностороннем порядке изменять настоящую Политику. Новая редакция Политики вступает в силу с момента ее размещения на Сайте.`,
+  },
+  {
+    title: "7. ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ",
+    body: `7.1. К настоящей Политике и отношениям между Пользователем и Администратором, возникающим в связи с ее применением, подлежит применению право Российской Федерации.
+
+7.2. Все споры по настоящей Политике подлежат разрешению в порядке, установленном действующим законодательством РФ, по месту нахождения Администратора.`,
+  },
 ];
 
 // ⚠️ ВСТАВЬ СЮДА СВОИ ССЫЛКИ (две таблицы): embed/open/copy
@@ -159,9 +343,9 @@ const Navbar = ({ lang, setLang }) => {
   return (
     <nav className="fixed top-0 w-full z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="text-2xl font-serif font-bold tracking-tight text-stone-800">
-          GridFlow.
-        </a>
+        <div className="text-2xl font-serif font-bold text-stone-900 tracking-tight z-50">
+          TrackSelf<span className="text-green-600">.</span>
+        </div>
 
         <div className="hidden md:flex items-center space-x-8">
           <a href="#templates" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition">
@@ -176,13 +360,14 @@ const Navbar = ({ lang, setLang }) => {
         </div>
 
         <div className="flex items-center space-x-4">
-          {/* <button
+          <button
             onClick={() => setLang(lang === 'en' ? 'ru' : 'en')}
             className="flex items-center text-xs font-bold bg-stone-200 px-3 py-1 rounded-full hover:bg-stone-300 transition"
+            aria-label={lang === 'en' ? 'Switch to Russian' : 'Switch to English'}
           >
             <Globe size={14} className="mr-1" />
-            {lang.toUpperCase()}
-          </button> */}
+            {lang === 'en' ? 'RU' : 'EN'}
+          </button>
 
           <button className="relative p-2 text-stone-800 hover:bg-stone-100 rounded-full transition" aria-label={t.cart}>
             <ShoppingBag size={20} />
@@ -419,7 +604,6 @@ const ProductCard = ({ product, lang, onOpen }) => {
   const currency = t.currency;
   const price = product.price[lang];
   const isFree = price === 0;
-  const buyUrl = `${FASTSPRING_TEST_BASE}${product.fastspringPath}`;
 
   return (
     <motion.div
@@ -443,7 +627,7 @@ const ProductCard = ({ product, lang, onOpen }) => {
         />
         {product.bestseller && (
           <span className="absolute top-3 left-3 bg-white/90 backdrop-blur text-stone-900 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wide flex items-center shadow-sm">
-            <Star size={10} className="mr-1 fill-yellow-400 text-yellow-400" /> Bestseller
+            <Star size={10} className="mr-1 fill-yellow-400 text-yellow-400" /> {t.bestseller}
           </span>
         )}
       </div>
@@ -467,16 +651,14 @@ const ProductCard = ({ product, lang, onOpen }) => {
           <span className={`text-lg font-semibold ${isFree ? 'text-emerald-700' : 'text-stone-900'}`}>
             {isFree ? (lang === 'en' ? 'Free' : 'Бесплатно') : `${currency}${price}`}
           </span>
-          <a
-            href={buyUrl}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="button"
             onClick={(event) => event.stopPropagation()}
-            className="bg-stone-100 hover:bg-stone-900 hover:text-white text-stone-900 px-4 py-2 rounded-full transition duration-300 text-sm font-medium"
-            title={!product.fastspringPath || product.fastspringPath.includes("PASTE_") ? "Вставь fastspringPath" : ""}
+            className="bg-stone-100 text-stone-900 px-4 py-2 rounded-full transition duration-300 text-sm font-medium opacity-60 cursor-not-allowed"
+            title="Покупка временно недоступна"
           >
             {t.buy}
-          </a>
+          </button>
         </div>
       </div>
     </motion.div>
@@ -491,7 +673,6 @@ const ProductDetailModal = ({ product, lang, onClose }) => {
   const currency = t.currency;
   const price = product.price[lang];
   const oldPrice = product.oldPrice?.[lang];
-  const buyUrl = `${FASTSPRING_TEST_BASE}${product.fastspringPath}`;
 
   return (
     <div className="fixed inset-0 z-[120]">
@@ -545,15 +726,13 @@ const ProductDetailModal = ({ product, lang, onClose }) => {
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a
-                href={buyUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="bg-stone-900 text-white px-6 py-3 rounded-xl font-medium hover:bg-stone-700 transition flex items-center justify-center"
-                title={!product.fastspringPath || product.fastspringPath.includes("PASTE_") ? "Вставь fastspringPath" : ""}
+              <button
+                type="button"
+                className="bg-stone-900 text-white px-6 py-3 rounded-xl font-medium transition flex items-center justify-center opacity-60 cursor-not-allowed"
+                title="Покупка временно недоступна"
               >
                 {t.buy}
-              </a>
+              </button>
               <button
                 onClick={onClose}
                 className="bg-white border border-stone-200 text-stone-900 px-6 py-3 rounded-xl font-medium hover:bg-stone-50 transition"
@@ -623,20 +802,68 @@ const Shop = ({ lang }) => {
   );
 };
 
+const LegalPage = ({ title, content, backLabel }) => (
+  <div className="min-h-screen bg-stone-50 selection:bg-emerald-200 selection:text-emerald-900 font-sans">
+    <div className="max-w-5xl mx-auto px-6 py-10">
+      <a href="#top" className="text-sm text-stone-500 hover:text-stone-900 transition">
+        {backLabel}
+      </a>
+      <h1 className="text-3xl md:text-4xl font-serif text-stone-900 mt-4 mb-6">
+        {title}
+      </h1>
+      <div className="bg-white border border-stone-100 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 text-stone-700 text-sm leading-relaxed whitespace-pre-line">
+        {content.map((section) => (
+          <div key={section.title || section.body}>
+            {section.title ? (
+              <div className="text-stone-900 font-semibold mb-2">{section.title}</div>
+            ) : null}
+            <div>{section.body}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 const Footer = ({ lang }) => {
   const t = TRANSLATIONS[lang];
   return (
     <footer className="bg-stone-900 text-stone-400 py-12 px-6" id="faq">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div className="mb-4 md:mb-0">
-          <span className="text-2xl font-serif text-stone-100 font-bold">GridFlow.</span>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="flex flex-col">
+          <span className="text-2xl font-serif text-stone-100 font-bold">TrackSelf.</span>
+          <div className="text-sm font-light mt-3">{t.footer}</div>
+          {/* <div className="flex space-x-6 mt-4">
+            <a href="#" className="hover:text-white transition">Instagram</a>
+            <a href="#" className="hover:text-white transition">Pinterest</a>
+          </div> */}
         </div>
+
         <div className="text-sm font-light">
-          {t.footer}
+          <div className="text-stone-200 font-medium mb-3">{t.legalTitle}</div>
+          <div className="space-y-2">
+            <div>{t.legalName}</div>
+            <div>{t.legalInn}</div>
+            <div>{t.legalContact}</div>
+          </div>
         </div>
-        <div className="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-white transition">Instagram</a>
-          <a href="#" className="hover:text-white transition">Pinterest</a>
+
+        <div className="text-sm font-light">
+          <div className="text-stone-200 font-medium mb-4">{t.documentsTitle}</div>
+          <div className="flex flex-col gap-3">
+            <a
+              href="#offer"
+              className="inline-flex items-center justify-center rounded-full border border-stone-600 px-4 py-2 text-sm text-stone-200 hover:text-white hover:border-stone-400 transition"
+            >
+              {t.offerTitle}
+            </a>
+            <a
+              href="#privacy"
+              className="inline-flex items-center justify-center rounded-full border border-stone-600 px-4 py-2 text-sm text-stone-200 hover:text-white hover:border-stone-400 transition"
+            >
+              {t.privacyTitle}
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -647,6 +874,49 @@ const Footer = ({ lang }) => {
 
 export default function App() {
   const [lang, setLang] = useState('en');
+  const [page, setPage] = useState(() => {
+    if (typeof window === 'undefined') return 'home';
+    return window.location.hash === '#offer'
+      ? 'offer'
+      : window.location.hash === '#privacy'
+        ? 'privacy'
+        : 'home';
+  });
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#offer') {
+        setPage('offer');
+      } else if (window.location.hash === '#privacy') {
+        setPage('privacy');
+      } else {
+        setPage('home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const t = TRANSLATIONS[lang];
+
+  if (page === 'offer') {
+    return (
+      <LegalPage title={t.offerTitle} content={OFFER_CONTENT} backLabel={t.backToSite} />
+    );
+  }
+
+  if (page === 'privacy') {
+    return (
+      <LegalPage title={t.privacyTitle} content={PRIVACY_CONTENT} backLabel={t.backToSite} />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-stone-50 selection:bg-emerald-200 selection:text-emerald-900 font-sans">
